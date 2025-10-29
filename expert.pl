@@ -37,66 +37,99 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % building(Name, Area/Location, ShortDescription).
-% building(Name, Area/Location, ShortDescription).
 
-building(main_gate, 'Entrance Area', 'Main entrance to the Trincomalee Campus of Eastern University, Sri Lanka.').
-building(admin_building, 'Administrative Block', 'Houses the offices of the Rector, Dean, and administrative staff of the Trincomalee Campus.').
-building(fas_building, 'Science Complex', 'Main facility for the Faculty of Applied Sciences; includes laboratories, lecture halls, and a smart classroom for blended learning.').
-building(fcm_building, 'Commerce & Management Block', 'Building of the Faculty of Commerce and Management; contains classrooms, computer labs, and faculty offices.').
-building(fcbs_building, 'Communication & Business Studies Complex', 'Modern building for the Faculty of Communication and Business Studies; project cost around Rs. 821 million, includes administrative and learning facilities.').
-building(library, 'Central Library', 'Main library of the Trincomalee Campus; provides study areas, research resources, and digital learning access.').
-building(it_center, 'ICT Centre', 'Technology hub supporting students and staff with computer facilities, networking, and e-learning services.').
-building(auditorium, 'Main Auditorium', 'Large hall used for academic events, seminars, and cultural programs.').
-building(canteen, 'Student Services Area', 'Campus canteen providing food and refreshments for students and staff.').
-building(hostel_men, 'Residential Zone - Male Hostel', 'Accommodation for male students with essential amenities and study areas.').
-building(hostel_women, 'Residential Zone - Female Hostel', 'Accommodation for female students located near the main teaching blocks.').
 building(parking_area, 'Campus Grounds', 'Designated parking spaces for staff, students, and visitors.').
 building(sports_complex, 'Sports Grounds', 'Facilities for indoor and outdoor sports including volleyball, cricket, and athletics.').
 building(garden_area, 'Campus Green Zone', 'Maintained green area with trees and benches providing a relaxing environment for students.').
 building(security_office, 'Entrance Area', 'Campus security control point ensuring safety and access regulation at the main entrance.').
 
-
-% service(ServiceName, Location, Details).
-
-service(registration, admin_office,
-    'Students can complete undergraduate or graduate registration, collect registration forms, and submit required documents at the Admin Office.').
-
-service(id_card, admin_office,
-    'The Admin Office issues new student ID cards and handles requests for lost or damaged card replacements.').
-
-service(campus_mail, head_of_department,
-    'To send official letters or requests through the campus mail system, students must first obtain approval from the Head of Department (HOD).').
-
-service(exam_apply, head_of_department,
-    'Students applying for exams must fill out the exam application form and submit it to the Head of Department (HOD) for verification and approval.').
-
-service(exam_apply_repeat, head_of_department_and_admin_office,
-    'For repeat exam applications, students must fill out the repeat exam form, submit it to the Admin Office to check repeat subject details and payment amount, pay the required fees, collect the payment receipt, and then submit both the approved form and payment receipt to the Head of Department (HOD).').
-
-service(gym_apply, sports_council_office,
-    'Students who wish to use the gym must fill out a gym application form and submit it to the Sports Council Office for approval.').
-
-service(confirmation_scholarship_letter, head_of_department,
-    'To obtain a scholarship confirmation letter, students must collect the request form from the HOD office, fill it out carefully, and submit it back to the department for processing.').
-
-
-% contact(Name, Role, Phone).
-contact('Mrs. Priyanka', 'Head of Student Affairs', '011-2345678').
-contact('Mr. Silva', 'Library Manager', '011-9876543').
-contact('Dr. Kumar', 'Head of CS Department', '011-5551234').
-contact('Security Office', 'Campus Security', '011-9110000').
-
-% hours(Place, OpenHours).
-hours(library, '8:00 AM - 8:00 PM').
-hours(canteen, '7:30 AM - 6:00 PM').
-hours(admin_office, '8:00 AM - 4:00 PM').
-hours(cs_lab, '9:00 AM - 3.30 PM').
-
 % direction(From, To, Steps).
-% Short illustration directions; expand with real campus routes.
-direction('main gate', library, 'Walk straight 200m, library on your left').
-direction(library, cs_lab, 'Exit library, turn right, walk 3 minutes to Science Block').
-direction(admin_office, canteen, 'Go down the stairs, cross the quad, canteen ahead').
+% Realistic campus walking directions using atoms (no quotes for place names).
+
+direction(main_gate, admin_building,
+          'Enter through the main gate, walk straight for about 150 meters; the Administrative Building will be in front.').
+
+direction(main_gate, library,
+          'Walk straight along the main road for about 200 meters from the gate; the Library will appear on your left.').
+
+direction(main_gate, fas_building,
+          'Enter the gate, turn right after about 100 meters, continue straight another 100 meters to reach the Faculty of Applied Sciences building.').
+
+direction(main_gate, fcm_building,
+          'Walk past the admin building, turn slightly left, and continue for 150 meters to reach the Faculty of Commerce & Management.').
+
+direction(main_gate, fcbs_building,
+          'Follow the main internal road for 300 meters; the Faculty of Communication & Business Studies is on your right.').
+
+direction(main_gate, canteen,
+          'After entering through the main gate, walk straight 150 meters, then turn left near the garden area to find the canteen.').
+
+direction(admin_building, library,
+          'Exit the Administrative Building and walk straight towards the main road for about 100 meters; the Library is opposite the road.').
+
+direction(admin_building, fas_building,
+          'From the Admin Building, turn right and walk for about 2 minutes to reach the Faculty of Applied Sciences.').
+
+direction(admin_building, fcm_building,
+          'From the Admin Building, turn left and walk across the courtyard for around 2 minutes; you will reach the Commerce & Management block.').
+
+direction(admin_building, fcbs_building,
+          'Walk past the Admin Block and continue straight for 200 meters; the FCBS building will be on your right.').
+
+direction(library, fas_building,
+          'Exit the Library, turn right, and walk straight for about 2 minutes; the Science Complex is nearby on the same lane.').
+
+direction(library, fcm_building,
+          'From the Library, turn left and follow the internal road for 150 meters; you will reach the FCM building.').
+
+direction(library, fcbs_building,
+          'Exit the Library, walk straight along the campus road for 3 minutes; the FCBS complex is on the right.').
+
+direction(library, canteen,
+          'Leave the Library, turn left near the quad, and walk 1 minute to find the canteen.').
+
+direction(fas_building, fcm_building,
+          'From the Science Complex, walk across the main courtyard for 2 minutes; the Commerce & Management block is opposite.').
+
+direction(fas_building, fcbs_building,
+          'Exit the Science Complex, continue straight for about 200 meters; the FCBS building is ahead on your right.').
+
+direction(fas_building, library,
+          'Walk back toward the main road for 2 minutes to reach the Library.').
+
+direction(fcm_building, fcbs_building,
+          'Follow the campus road east for 200 meters; the FCBS building stands in front.').
+
+direction(fcm_building, canteen,
+          'Exit the Commerce block, turn left, and walk 100 meters to reach the canteen.').
+
+direction(fcm_building, library,
+          'Walk straight from the FCM building across the courtyard to reach the Library in 2 minutes.').
+
+direction(fcbs_building, canteen,
+          'Exit the FCBS building, turn left, and walk straight 150 meters; the canteen is near the garden area.').
+
+direction(fcbs_building, library,
+          'Walk back toward the main road for 3 minutes; the Library is near the Administrative Building.').
+
+direction(canteen, hostel_men,
+          'From the canteen, take the rear path, walk 250 meters; the Men’s Hostel is on your right.').
+
+direction(canteen, hostel_women,
+          'From the canteen, take the left internal road, walk around 300 meters; you will reach the Women’s Hostel.').
+
+direction(canteen, sports_complex,
+          'From the canteen, walk past the garden for 2 minutes to reach the Sports Complex.').
+
+direction(hostel_men, fcbs_building,
+          'From the Men’s Hostel, walk 300 meters toward the main teaching zone; the FCBS building is on your left.').
+
+direction(hostel_women, library,
+          'From the Women’s Hostel, walk down the main road for about 5 minutes; the Library will appear on your right.').
+
+direction(sports_complex, main_gate,
+          'Exit the Sports Complex, walk 400 meters straight along the internal road to reach the main gate.').
+
 
 % club(ClubName, Location, Contact).
 club('Music Club', admin_office, 'Clubs Office').
