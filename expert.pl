@@ -7,21 +7,38 @@
 %   ?- start.
 %
 % Type 'help.' for usage inside the system and 'exit.' to quit.
+%
+% DATA MODELING GUIDELINES
+% ------------------------
+% building/3 facts use the following shape:
+%   building(NameAtom, AreaLabelString, ShortDescriptionString).
+%
+% - NameAtom: a lowercase atom identifier (no spaces). Use underscores for multi-word names.
+%     e.g., library, it_building, admin_office, sports_complex
+% - AreaLabelString: a human-friendly label shown to users. Keep it as a single-quoted string.
+%     e.g., 'Main Quad', 'Science Block', 'North Wing', 'East Campus'
+% - ShortDescriptionString: a brief free-text description in single quotes.
+%
+% Cross-references (like services, hours, directions) should refer to the NameAtom
+% of the building, not the AreaLabelString. For example:
+%   service(registration, admin_office, '...').  % refers to the building name (admin_office)
+%   hours(library, '8:00 AM - 8:00 PM').         % refers to the building name (library)
+%   direction('main gate', library, '...').      % refers to the building name (library)
+%
+% To add a new building correctly:
+%   building(cs_office, 'Science Block, 1st Floor', 'CS Department Office and inquiries').
+%   hours(cs_office, '9:00 AM - 4:00 PM').
+%   service(student_inquiries, cs_office, 'General student inquiries for CS').
 
 :- initialization(set_prolog_flag(verbose, silent)).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Sample Knowledge Base
+% Knowledge Base
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % building(Name, Area/Location, ShortDescription).
-building(library, 'Main Quad', 'Central library with study rooms and computers').
-building(cs_lab, 'Science Block', 'Computer Science labs (rooms 201-210)').
-building(admin_office, 'North Wing', 'Administration and student services').
-building(hostel_a, 'East Campus', 'Male hostel A, 3 floors').
-building(canteen, 'Main Quad', 'Cafeteria serving meals and snacks').
-building(sports_complex, 'South Field', 'Indoor courts and gym').
 
+<<<<<<< HEAD
 % service(ServiceName, Location, Details).
 
 service(registration, admin_office,
@@ -64,12 +81,110 @@ hours(ps_head_of_departmentt, '8:30 AM - 5:00 PM (Wensday 1.00 p.m - 2.00 p.m st
 hours(lcs_head_of_department, '8:30 AM - 5:00 PM (Wensday 1.00 p.m - 2.00 p.m student matter)').
 hours(bms_head_of_department, '8:30 AM - 5:00 PM (Wensday 1.00 p.m - 2.00 p.m student matter)').
 hours(medical_center, '8:30 AM - 4:30 PM(doctor sit 12.00 p.m-2.00 p.m)').
+=======
+% building(Name, Area, ShortDescription).
+building(main_gate, entrance_area, "Main entrance to the Trincomalee Campus of Eastern University").
+building(admin_building, admin_block, "Houses campus administrative offices and Rector/Dean offices").
+building(library, central_library, "Campus library: study spaces, stacks, and digital resources").
+building(fas_building, science_complex, "Faculty of Applied Sciences — lecture halls, labs, and smart/blended learning facilities").
+building(fcm_building, commerce_management_block, "Faculty of Commerce & Management — classrooms, labs, faculty offices").
+building(fcbs_building, communication_business_block, "Faculty of Communication & Business Studies — academic & administrative spaces").
+building(canteen, student_services_area, "Campus canteen for students & staff (refreshments & meals)").
+building(hostel_men, hostel_area_men, "Residential accommodation for male students on campus").
+building(hostel_women, hostel_area_women, "Residential accommodation for female students on campus").
+building(sports_complex, sports_grounds, "Facilities for indoor and outdoor sports including volleyball, cricket, and athletics").
+building(garden_area, green_zone, "Maintained green area with trees and benches providing a relaxing environment for students").
+building(security_office, entrance_area, "Campus security control point ensuring safety and access regulation at the main entrance").
+building(parking_area, campus_grounds, "Designated parking spaces for staff, students, and visitors").
+>>>>>>> 7cd1a34b4219cc4a750b0554eb1c222d0947afbe
 
 % direction(From, To, Steps).
-% Short illustration directions; expand with real campus routes.
-direction('main gate', library, 'Walk straight 200m, library on your left').
-direction(library, cs_lab, 'Exit library, turn right, walk 3 minutes to Science Block').
-direction(admin_office, canteen, 'Go down the stairs, cross the quad, canteen ahead').
+% Realistic campus walking directions using atoms (no quotes for place names).
+
+direction(main_gate, admin_building,
+          'Enter through the main gate, walk straight for about 150 meters; the Administrative Building will be in front.').
+
+direction(main_gate, library,
+          'Walk straight along the main road for about 200 meters from the gate; the Library will appear on your left.').
+
+direction(main_gate, fas_building,
+          'Enter the gate, turn right after about 100 meters, continue straight another 100 meters to reach the Faculty of Applied Sciences building.').
+
+direction(main_gate, fcm_building,
+          'Walk past the admin building, turn slightly left, and continue for 150 meters to reach the Faculty of Commerce & Management.').
+
+direction(main_gate, fcbs_building,
+          'Follow the main internal road for 300 meters; the Faculty of Communication & Business Studies is on your right.').
+
+direction(main_gate, canteen,
+          'After entering through the main gate, walk straight 150 meters, then turn left near the garden area to find the canteen.').
+
+direction(admin_building, library,
+          'Exit the Administrative Building and walk straight towards the main road for about 100 meters; the Library is opposite the road.').
+
+direction(admin_building, fas_building,
+          'From the Admin Building, turn right and walk for about 2 minutes to reach the Faculty of Applied Sciences.').
+
+direction(admin_building, fcm_building,
+          'From the Admin Building, turn left and walk across the courtyard for around 2 minutes; you will reach the Commerce & Management block.').
+
+direction(admin_building, fcbs_building,
+          'Walk past the Admin Block and continue straight for 200 meters; the FCBS building will be on your right.').
+
+direction(library, fas_building,
+          'Exit the Library, turn right, and walk straight for about 2 minutes; the Science Complex is nearby on the same lane.').
+
+direction(library, fcm_building,
+          'From the Library, turn left and follow the internal road for 150 meters; you will reach the FCM building.').
+
+direction(library, fcbs_building,
+          'Exit the Library, walk straight along the campus road for 3 minutes; the FCBS complex is on the right.').
+
+direction(library, canteen,
+          'Leave the Library, turn left near the quad, and walk 1 minute to find the canteen.').
+
+direction(fas_building, fcm_building,
+          'From the Science Complex, walk across the main courtyard for 2 minutes; the Commerce & Management block is opposite.').
+
+direction(fas_building, fcbs_building,
+          'Exit the Science Complex, continue straight for about 200 meters; the FCBS building is ahead on your right.').
+
+direction(fas_building, library,
+          'Walk back toward the main road for 2 minutes to reach the Library.').
+
+direction(fcm_building, fcbs_building,
+          'Follow the campus road east for 200 meters; the FCBS building stands in front.').
+
+direction(fcm_building, canteen,
+          'Exit the Commerce block, turn left, and walk 100 meters to reach the canteen.').
+
+direction(fcm_building, library,
+          'Walk straight from the FCM building across the courtyard to reach the Library in 2 minutes.').
+
+direction(fcbs_building, canteen,
+          'Exit the FCBS building, turn left, and walk straight 150 meters; the canteen is near the garden area.').
+
+direction(fcbs_building, library,
+          'Walk back toward the main road for 3 minutes; the Library is near the Administrative Building.').
+
+direction(canteen, hostel_men,
+          'From the canteen, take the rear path, walk 250 meters; the Men’s Hostel is on your right.').
+
+direction(canteen, hostel_women,
+          'From the canteen, take the left internal road, walk around 300 meters; you will reach the Women’s Hostel.').
+
+direction(canteen, sports_complex,
+          'From the canteen, walk past the garden for 2 minutes to reach the Sports Complex.').
+
+direction(hostel_men, fcbs_building,
+          'From the Men’s Hostel, walk 300 meters toward the main teaching zone; the FCBS building is on your left.').
+
+direction(hostel_women, library,
+          'From the Women’s Hostel, walk down the main road for about 5 minutes; the Library will appear on your right.').
+
+direction(sports_complex, main_gate,
+          'Exit the Sports Complex, walk 400 meters straight along the internal road to reach the main gate.').
+
 
 % club(ClubName, Location, Contact).
 club('Music Club', admin_office, 'Clubs Office').
