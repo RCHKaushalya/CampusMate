@@ -33,15 +33,25 @@
 :- initialization(set_prolog_flag(verbose, silent)).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Sample Knowledge Base
+% Knowledge Base
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % building(Name, Area/Location, ShortDescription).
 
-building(parking_area, 'Campus Grounds', 'Designated parking spaces for staff, students, and visitors.').
-building(sports_complex, 'Sports Grounds', 'Facilities for indoor and outdoor sports including volleyball, cricket, and athletics.').
-building(garden_area, 'Campus Green Zone', 'Maintained green area with trees and benches providing a relaxing environment for students.').
-building(security_office, 'Entrance Area', 'Campus security control point ensuring safety and access regulation at the main entrance.').
+% building(Name, Area, ShortDescription).
+building(main_gate, entrance_area, "Main entrance to the Trincomalee Campus of Eastern University").
+building(admin_building, admin_block, "Houses campus administrative offices and Rector/Dean offices").
+building(library, central_library, "Campus library: study spaces, stacks, and digital resources").
+building(fas_building, science_complex, "Faculty of Applied Sciences — lecture halls, labs, and smart/blended learning facilities").
+building(fcm_building, commerce_management_block, "Faculty of Commerce & Management — classrooms, labs, faculty offices").
+building(fcbs_building, communication_business_block, "Faculty of Communication & Business Studies — academic & administrative spaces").
+building(canteen, student_services_area, "Campus canteen for students & staff (refreshments & meals)").
+building(hostel_men, hostel_area_men, "Residential accommodation for male students on campus").
+building(hostel_women, hostel_area_women, "Residential accommodation for female students on campus").
+building(sports_complex, sports_grounds, "Facilities for indoor and outdoor sports including volleyball, cricket, and athletics").
+building(garden_area, green_zone, "Maintained green area with trees and benches providing a relaxing environment for students").
+building(security_office, entrance_area, "Campus security control point ensuring safety and access regulation at the main entrance").
+building(parking_area, campus_grounds, "Designated parking spaces for staff, students, and visitors").
 
 % direction(From, To, Steps).
 % Realistic campus walking directions using atoms (no quotes for place names).
