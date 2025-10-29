@@ -57,10 +57,28 @@ building(security_office, 'Entrance Area', 'Campus security control point ensuri
 
 
 % service(ServiceName, Location, Details).
-service(registration, admin_office, 'Undergraduate/Graduate registration and forms').
-service(id_card, admin_office, 'ID card issuance and replacements').
-service(canteen_menu, canteen, 'Open breakfast and lunch. Cash and card accepted').
-service(clubs_office, admin_office, 'Information about student clubs and societies').
+
+service(registration, admin_office,
+    'Students can complete undergraduate or graduate registration, collect registration forms, and submit required documents at the Admin Office.').
+
+service(id_card, admin_office,
+    'The Admin Office issues new student ID cards and handles requests for lost or damaged card replacements.').
+
+service(campus_mail, head_of_department,
+    'To send official letters or requests through the campus mail system, students must first obtain approval from the Head of Department (HOD).').
+
+service(exam_apply, head_of_department,
+    'Students applying for exams must fill out the exam application form and submit it to the Head of Department (HOD) for verification and approval.').
+
+service(exam_apply_repeat, head_of_department_and_admin_office,
+    'For repeat exam applications, students must fill out the repeat exam form, submit it to the Admin Office to check repeat subject details and payment amount, pay the required fees, collect the payment receipt, and then submit both the approved form and payment receipt to the Head of Department (HOD).').
+
+service(gym_apply, sports_council_office,
+    'Students who wish to use the gym must fill out a gym application form and submit it to the Sports Council Office for approval.').
+
+service(confirmation_scholarship_letter, head_of_department,
+    'To obtain a scholarship confirmation letter, students must collect the request form from the HOD office, fill it out carefully, and submit it back to the department for processing.').
+
 
 % contact(Name, Role, Phone).
 contact('Mrs. Priyanka', 'Head of Student Affairs', '011-2345678').
