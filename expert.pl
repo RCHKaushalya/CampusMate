@@ -7,6 +7,28 @@
 %   ?- start.
 %
 % Type 'help.' for usage inside the system and 'exit.' to quit.
+%
+% DATA MODELING GUIDELINES
+% ------------------------
+% building/3 facts use the following shape:
+%   building(NameAtom, AreaLabelString, ShortDescriptionString).
+%
+% - NameAtom: a lowercase atom identifier (no spaces). Use underscores for multi-word names.
+%     e.g., library, it_building, admin_office, sports_complex
+% - AreaLabelString: a human-friendly label shown to users. Keep it as a single-quoted string.
+%     e.g., 'Main Quad', 'Science Block', 'North Wing', 'East Campus'
+% - ShortDescriptionString: a brief free-text description in single quotes.
+%
+% Cross-references (like services, hours, directions) should refer to the NameAtom
+% of the building, not the AreaLabelString. For example:
+%   service(registration, admin_office, '...').  % refers to the building name (admin_office)
+%   hours(library, '8:00 AM - 8:00 PM').         % refers to the building name (library)
+%   direction('main gate', library, '...').      % refers to the building name (library)
+%
+% To add a new building correctly:
+%   building(cs_office, 'Science Block, 1st Floor', 'CS Department Office and inquiries').
+%   hours(cs_office, '9:00 AM - 4:00 PM').
+%   service(student_inquiries, cs_office, 'General student inquiries for CS').
 
 :- initialization(set_prolog_flag(verbose, silent)).
 
@@ -15,12 +37,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % building(Name, Area/Location, ShortDescription).
-building(library, 'Main Quad', 'Central library with study rooms and computers').
-building(cs_lab, 'Science Block', 'Computer Science labs (rooms 201-210)').
-building(admin_office, 'North Wing', 'Administration and student services').
-building(hostel_a, 'East Campus', 'Male hostel A, 3 floors').
-building(canteen, 'Main Quad', 'Cafeteria serving meals and snacks').
-building(sports_complex, 'South Field', 'Indoor courts and gym').
+% building(Name, Area/Location, ShortDescription).
+
+building(main_gate, 'Entrance Area', 'Main entrance to the Trincomalee Campus of Eastern University, Sri Lanka.').
+building(admin_building, 'Administrative Block', 'Houses the offices of the Rector, Dean, and administrative staff of the Trincomalee Campus.').
+building(fas_building, 'Science Complex', 'Main facility for the Faculty of Applied Sciences; includes laboratories, lecture halls, and a smart classroom for blended learning.').
+building(fcm_building, 'Commerce & Management Block', 'Building of the Faculty of Commerce and Management; contains classrooms, computer labs, and faculty offices.').
+building(fcbs_building, 'Communication & Business Studies Complex', 'Modern building for the Faculty of Communication and Business Studies; project cost around Rs. 821 million, includes administrative and learning facilities.').
+building(library, 'Central Library', 'Main library of the Trincomalee Campus; provides study areas, research resources, and digital learning access.').
+building(it_center, 'ICT Centre', 'Technology hub supporting students and staff with computer facilities, networking, and e-learning services.').
+building(auditorium, 'Main Auditorium', 'Large hall used for academic events, seminars, and cultural programs.').
+building(canteen, 'Student Services Area', 'Campus canteen providing food and refreshments for students and staff.').
+building(hostel_men, 'Residential Zone - Male Hostel', 'Accommodation for male students with essential amenities and study areas.').
+building(hostel_women, 'Residential Zone - Female Hostel', 'Accommodation for female students located near the main teaching blocks.').
+building(parking_area, 'Campus Grounds', 'Designated parking spaces for staff, students, and visitors.').
+building(sports_complex, 'Sports Grounds', 'Facilities for indoor and outdoor sports including volleyball, cricket, and athletics.').
+building(garden_area, 'Campus Green Zone', 'Maintained green area with trees and benches providing a relaxing environment for students.').
+building(security_office, 'Entrance Area', 'Campus security control point ensuring safety and access regulation at the main entrance.').
+
 
 % service(ServiceName, Location, Details).
 service(registration, admin_office, 'Undergraduate/Graduate registration and forms').
@@ -37,8 +71,8 @@ contact('Security Office', 'Campus Security', '011-9110000').
 % hours(Place, OpenHours).
 hours(library, '8:00 AM - 8:00 PM').
 hours(canteen, '7:30 AM - 6:00 PM').
-hours(admin_office, '9:00 AM - 5:00 PM').
-hours(cs_lab, '9:00 AM - 9:00 PM').
+hours(admin_office, '8:00 AM - 4:00 PM').
+hours(cs_lab, '9:00 AM - 3.30 PM').
 
 % direction(From, To, Steps).
 % Short illustration directions; expand with real campus routes.
