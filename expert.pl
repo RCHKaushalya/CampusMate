@@ -258,6 +258,4 @@ sub_string_after(String, Pattern, After) :-
 % helpful predicate to stop via query
 exit :- halt.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % End of file
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
