@@ -45,6 +45,8 @@ service(gym_apply, sports_council_office,
 service(confirmation_scholarship_letter, head_of_department,
     'To obtain a scholarship confirmation letter, students must collect the request form from the HOD office, fill it out carefully, and submit it back to the department for processing.').
 
+service(medication, medical_center,
+    'Students can visit the Medical Center to receive medicine, medical treatment, and first aid services when needed.').
 
 % contact(Name, Role, Phone).
 contact('Mrs. Priyanka', 'Head of Student Affairs', '011-2345678').
@@ -53,10 +55,15 @@ contact('Dr. Kumar', 'Head of CS Department', '011-5551234').
 contact('Security Office', 'Campus Security', '011-9110000').
 
 % hours(Place, OpenHours).
-hours(library, '8:00 AM - 8:00 PM').
-hours(canteen, '7:30 AM - 6:00 PM').
+hours(library, '8:30 AM - 4:30 PM (Saterday open)').
+hours(canteen, '6:30 AM - 9:00 PM').
 hours(admin_office, '9:00 AM - 5:00 PM').
-hours(cs_lab, '9:00 AM - 9:00 PM').
+hours(sports_council_office, '8:30 AM - 4:30 PM').
+hours(cs_head_of_department, '8:30 AM - 5:00 PM (Wensday 1.00 p.m - 2.00 p.m student matter)').
+hours(ps_head_of_departmentt, '8:30 AM - 5:00 PM (Wensday 1.00 p.m - 2.00 p.m student matter)').
+hours(lcs_head_of_department, '8:30 AM - 5:00 PM (Wensday 1.00 p.m - 2.00 p.m student matter)').
+hours(bms_head_of_department, '8:30 AM - 5:00 PM (Wensday 1.00 p.m - 2.00 p.m student matter)').
+hours(medical_center, '8:30 AM - 4:30 PM(doctor sit 12.00 p.m-2.00 p.m)').
 
 % direction(From, To, Steps).
 % Short illustration directions; expand with real campus routes.
